@@ -4,7 +4,6 @@ import com.example.bibliogest.entity.libro;
 import com.example.bibliogest.service.libroservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,8 +37,7 @@ public class librocontroller {
         return ResponseEntity.ok(nuevo);
     }
 
-    // 📌 Actualizar parcialmente un libro (solo ADMIN)
-    @PreAuthorize("hasRole('ADMIN')")
+    // 📌 Actualizar parcialmente un libro (ACCESO PÚBLICO)
     @PatchMapping("/{id}")
     public ResponseEntity<libro> actualizarParcial(@PathVariable Long id, @RequestBody libro datosActualizados) {
         libro actualizado = libroservice.actualizarParcial(id, datosActualizados);
@@ -49,8 +47,7 @@ public class librocontroller {
         return ResponseEntity.ok(actualizado);
     }
 
-    // 📌 Eliminar un libro por ID (solo ADMIN)
-    @PreAuthorize("hasRole('ADMIN')")
+    // 📌 Eliminar un libro por ID (ACCESO PÚBLICO)
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         libroservice.eliminar(id);

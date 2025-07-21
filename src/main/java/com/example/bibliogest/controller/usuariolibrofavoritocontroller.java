@@ -75,4 +75,13 @@ public class usuariolibrofavoritocontroller {
     public List<usuariolibrofavorito> listarFavoritos(@PathVariable Long usuarioId) {
         return favoritoRepo.findByUsuarioId(usuarioId);
     }
+
+    // 📌 Listar TODOS los libros marcados como favoritos (sin token)
+    @GetMapping
+    public List<libro> obtenerTodosLosFavoritos() {
+        List<usuariolibrofavorito> favoritos = favoritoRepo.findAll();
+        return favoritos.stream()
+                .map(usuariolibrofavorito::getLibro)
+                .toList();
+    }
 }
