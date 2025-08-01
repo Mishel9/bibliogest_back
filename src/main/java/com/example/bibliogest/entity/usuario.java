@@ -28,8 +28,9 @@ public class usuario {
     @JoinColumn(name = "detalle_id", referencedColumnName = "id")
     private detalleusuario detalle;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<prestamo> prestamos;
+    // ❌ Eliminado:
+    // @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    // private List<prestamo> prestamos;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<usuariolibrofavorito> librosFavoritos;

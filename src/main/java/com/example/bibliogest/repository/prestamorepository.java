@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface prestamorepository extends JpaRepository<prestamo, Long> {
 
-    // Buscar todos los préstamos de un usuario
-    List<prestamo> findByUsuarioId(Long usuarioId);
+    // Buscar todos los préstamos por nombre de usuario (campo de texto)
+    List<prestamo> findByNombre(String nombre);
 
-    // Buscar todos los préstamos de un libro
-    List<prestamo> findByLibroId(Long libroId);
+    // Buscar todos los préstamos por título del libro (campo de texto)
+    List<prestamo> findByLibro(String libro);
 }

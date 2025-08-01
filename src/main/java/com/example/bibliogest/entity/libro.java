@@ -17,14 +17,10 @@ public class libro {
     private String autor;
 
     private int anioPublicacion;
-
     private String isbn;
-
     private boolean disponible;
 
-    @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL)
-    private List<prestamo> prestamos;
-
+    // ✅ Solo dejamos esta relación si existe la clase usuariolibrofavorito
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL)
     private List<usuariolibrofavorito> usuariosFavoritos;
 
@@ -46,9 +42,6 @@ public class libro {
 
     public boolean isDisponible() { return disponible; }
     public void setDisponible(boolean disponible) { this.disponible = disponible; }
-
-    public List<prestamo> getPrestamos() { return prestamos; }
-    public void setPrestamos(List<prestamo> prestamos) { this.prestamos = prestamos; }
 
     public List<usuariolibrofavorito> getUsuariosFavoritos() { return usuariosFavoritos; }
     public void setUsuariosFavoritos(List<usuariolibrofavorito> usuariosFavoritos) {

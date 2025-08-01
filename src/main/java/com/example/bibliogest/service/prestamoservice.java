@@ -30,6 +30,7 @@ public class prestamoservice {
         Optional<prestamo> optional = prestamorepository.findById(id);
         if (optional.isPresent()) {
             prestamo existente = optional.get();
+
             if (datosActualizados.getFechaPrestamo() != null) {
                 existente.setFechaPrestamo(datosActualizados.getFechaPrestamo());
             }
@@ -39,9 +40,10 @@ public class prestamoservice {
             if (datosActualizados.getLibro() != null) {
                 existente.setLibro(datosActualizados.getLibro());
             }
-            if (datosActualizados.getUsuario() != null) {
-                existente.setUsuario(datosActualizados.getUsuario());
+            if (datosActualizados.getNombre() != null) {
+                existente.setNombre(datosActualizados.getNombre());
             }
+
             return prestamorepository.save(existente);
         }
         return null;

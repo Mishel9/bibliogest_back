@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,8 +34,14 @@ public class prestamocontroller {
     // 📌 Crear un nuevo préstamo
     @PostMapping
     public ResponseEntity<prestamo> guardar(@RequestBody prestamo p) {
+        // Si no se especifica la fecha de préstamo, usar la fecha actual
+        if (p.getFechaPrestamo() == null) {
+            p.setFechaPrestamo(LocalDate.now());
+        }
+
+        // Si no se especifica la fecha de devolución, se deja como null (sin cambio)
         prestamo nuevo = prestamoservice.guardar(p);
-        return ResponseEntity.ok(nuevo);
+        return ResponseEntity.status(201).body(nuevo);
     }
 
     // 📌 Actualizar parcialmente un préstamo

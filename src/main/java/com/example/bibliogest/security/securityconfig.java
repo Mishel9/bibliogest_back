@@ -43,6 +43,7 @@ public class securityconfig {
             .requestMatchers("/api/favoritos/**").permitAll()  // ✅ Dejar sin token
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/libros/**").permitAll()
+                .requestMatchers("/api/prestamos/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated()
             )

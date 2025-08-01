@@ -10,26 +10,21 @@ public class prestamo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private usuario usuario;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "libro_id", nullable = false)
-    private libro libro;
+    private String nombre;  // Nombre del usuario (texto plano)
+    private String libro;   // Título del libro (texto plano)
 
     private LocalDate fechaPrestamo;
     private LocalDate fechaDevolucion;
 
-    // Getters y setters
+    // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public usuario getUsuario() { return usuario; }
-    public void setUsuario(usuario usuario) { this.usuario = usuario; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public libro getLibro() { return libro; }
-    public void setLibro(libro libro) { this.libro = libro; }
+    public String getLibro() { return libro; }
+    public void setLibro(String libro) { this.libro = libro; }
 
     public LocalDate getFechaPrestamo() { return fechaPrestamo; }
     public void setFechaPrestamo(LocalDate fechaPrestamo) { this.fechaPrestamo = fechaPrestamo; }
